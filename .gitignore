@@ -6,6 +6,8 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .coverage
+.coverage.*
+coverage.xml
 htmlcov/
 
 # Python environments and packaging
@@ -31,7 +33,12 @@ out/
 # Environment files and secrets
 .env
 .env.*
+.env.local
+frontend/.env.local
+backend/.env
 !.env.example
+!frontend/.env.example
+!backend/.env.example
 
 # Editor and IDE files
 .idea/

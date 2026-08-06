@@ -1,0 +1,30 @@
+{
+  "name": "taskflow-rag-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Development orchestration for the fictional TaskFlow RAG Assistant.",
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --names frontend,backend --prefix-colors cyan,magenta \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "uv --directory backend run fastapi dev app/main.py --port 8000",
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "lint:frontend": "npm --prefix frontend run lint",
+    "lint:backend": "uv --directory backend run ruff check .",
+    "format:backend": "uv --directory backend run ruff format .",
+    "format:backend:check": "uv --directory backend run ruff format --check .",
+    "typecheck": "npm run typecheck:frontend && npm run typecheck:backend",
+    "typecheck:frontend": "npm --prefix frontend run typecheck",
+    "typecheck:backend": "uv --directory backend run mypy app",
+    "test": "npm run test:frontend && npm run test:backend",
+    "test:frontend": "npm --prefix frontend run test",
+    "test:backend": "uv --directory backend run pytest",
+    "build": "npm --prefix frontend run build",
+    "validate:phase2": "uv --directory backend run python ../scripts/validate_phase_2.py"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "overrides": {
+    "shell-quote": "1.9.0"
+  }
+}
